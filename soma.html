@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            color:rgb(0, 62, 119);
+        }
+    </style>
+</head>
+<script>
+
+function calcularBhaskara() {
+    const a = parseFloat(document.getElementById('a').value);
+    const b = parseFloat(document.getElementById('b').value);
+    const c = parseFloat(document.getElementById('c').value);
+    const x1 = parseFloat(document.getElementById('x1').innerHTML);
+    const x2 = parseFloat(document.getElementById('x2').innerHTML);
+    
+
+    const discriminante = b ** 2 - 4 * a * c;
+
+    if (discriminante > 0) {
+        const x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+        const x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+        document.getElementById('x1').textContent = x1.toFixed(2);
+        document.getElementById('x2').textContent = x2.toFixed(2);
+    } else if (discriminante === 0) {
+        const x1 = -b / (2 * a);
+        document.getElementById('x1').textContent = x1.toFixed(2);
+        document.getElementById('x2').textContent = "Não há segunda raiz";
+    } else {
+        document.getElementById('x1').textContent = "Não há raízes reais";
+        document.getElementById('x2').textContent = "Não há raízes reais";
+    }
+}
+</script>
+<body>
+    <h1 id="tit">
+        Calculadora
+      </h1>
+    
+      <label for="a">Valor de A:</label>
+      <input type="number" id="a">
+      <br>
+  
+      <label for="b">Valor de B:</label>
+      <input type="number" id="b">
+      <br>
+  
+      <label for="c">Valor de C:</label>
+      <input type="number" id="c">
+      <br>
+  
+      <button onclick="calcularBhaskara()">Calcular</button>
+      <input type="button" value="Limpar" onclick="clicklimpar();">
+  
+      <p>O resultado de X1 é: <span id="x1"></span></p>
+      <p>O resultado de X2 é: <span id="x2"></span></p>
+    
+    </body>
+</body>
+</html>
